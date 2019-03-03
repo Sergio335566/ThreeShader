@@ -1,0 +1,67 @@
+body{
+  margin:0;
+  padding:0;
+  overflow: hidden;
+  width:300vw;
+  background-color: #FFFAFF;
+  font-family: 'Karla';
+}
+canvas{
+  width:20%;
+  height:65vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 99;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+.cadre{
+  width:25%;
+  height:75vh;
+  border:12px solid black;
+  box-shadow:50px 50px 100px rgba(0, 0, 0, 0.3), inset 0 0 10px black;
+  background-color: white;
+  position: absolute;
+  z-index:1;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+.about{
+  width:10%;
+  height:10vh;
+  background-color: blue;
+  bottom: 3%;
+  font-size:5px;
+  color:white;
+  padding:10px;
+  left: 75%;
+  box-shadow:10px 10px 10px rgba(0, 0, 0, 0.1);
+  margin-right: -50%;
+  transform: translate(-80%, -80%);
+  position: absolute;
+}
+h1{
+  text-align: center;
+  color:transparent;
+  -webkit-text-stroke: 1px blue;
+  font-size: 500px;
+  z-index:-2;
+  margin-top:-0.5%;
+  margin-left:-10%;
+}
+.shader{
+  text-align: right;
+  margin-top:20px;
+}
+hr{
+  width:25%;
+  height:3px;
+  border: 1px solid blue;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Viga" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script id="vertexShader" type="x-shader/x-vertex">
+  varying vec2 vUv;
+  void main() {
+    vUv = uv;
+
+    vec4 mvPosition = modelViewMatrix * vec4(position, 1.0 );
+    gl_Position = projectionMatrix * mvPosition;
+  }
+
+</script>
+<script id="fragmentShader" type="x-shader/x-fragment">
+
+    uniform vec2 iResolution;
+    uniform float iGlobalTime;
+    uniform vec2 mousePosition;
+    varying vec2 vUv;
+
+    void main(void)
+    {
+    float time=iGlobalTime*0.9;
+    vec2 uv = (-1.0 + 2.0 *vUv)* 2.0;
+    vec2 pos = (mousePosition.yx * uv.xy * 0.006);
+    vec2 uv0=uv;
+    float i0=1.4;
+    float i1=5.9;
+    float i2=2.0;
+    float i4=5.6;
+    for(int s=0;s<100;s++) {
+            vec2 r;
+            r=vec2(cos(uv.y*i0-i4+time/i1),sin(uv.x*i0-i4+time/i1))/i2;
+            r+=vec2(-r.y,r.x)*0.3;
+            uv.xy+=r-0.5;
+            i0*=1.93;
+		    i1*=1.15;
+		    i2*=1.7;
+            i4+=0.65+0.1*time*i1;
+            }
+            float r=cos(uv.x+time+(pos.y *uv.y) * 0.06) *0.1;
+            float b=cos(uv.y+time+(pos.x * uv.x) * 0.009) *0.9;
+            float g=0.1;
+
+
+     gl_FragColor = vec4(r,g,b,10.0);
+    }
+</script>
+
+  </head>
+  <body>
+    <div id="container"></div>
+    <div class="cadre"></div>
+    <hr>
+    <h1>Exposition</h1>
+    <div class="about">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p class="shader">Shaders Material</p>
+  </div>
+    <script src="https://threejs.org/build/three.min.js"></script>
+    <script src="main.js">
+
+    </script>
+  </body>
+</html>
